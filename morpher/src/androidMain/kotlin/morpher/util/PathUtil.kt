@@ -1,4 +1,4 @@
-package com.baec23.ludwig.morpher.util
+package morpher.util
 
 import android.graphics.PointF
 import android.graphics.RectF
@@ -7,8 +7,8 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.vector.PathNode
 import androidx.core.graphics.plus
 import androidx.core.graphics.times
-import com.baec23.ludwig.morpher.model.path.LudwigSubpath
-import com.baec23.ludwig.morpher.model.path.PathSegment
+import morpher.model.path.LudwigSubpath
+import morpher.model.path.PathSegment
 import kotlin.math.abs
 
 internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(

@@ -1,4 +1,4 @@
-package com.baec23.ludwig.morpher.component
+package morpher.component
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Constraints
-import com.baec23.ludwig.morpher.model.morpher.VectorSource
+import morpher.model.morpher.VectorSource
 
 @Composable
 fun VectorImage(

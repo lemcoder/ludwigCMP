@@ -37,19 +37,19 @@ android {
 
 kotlin {
     jvmToolchain(17)
-    androidTarget()
 
+    androidTarget()
+    iosArm64()
+
+    applyDefaultHierarchyTemplate()
     sourceSets {
         commonMain.dependencies {
-
+            implementation(libs.kotlinx.coroutines)
+            implementation(compose.foundation)
         }
 
         androidMain.dependencies {
             implementation(libs.androidx.core.ktx)
-            implementation(libs.kotlinx.coroutines.android)
-            implementation(project.dependencies.platform(libs.androidx.compose.bom))
-            implementation(libs.androidx.appcompat)
-            implementation(libs.androidx.compose.material3)
             implementation(libs.androidx.graphics.core)
             implementation(libs.androidx.graphics.path)
             implementation(libs.androidx.graphics.shapes)

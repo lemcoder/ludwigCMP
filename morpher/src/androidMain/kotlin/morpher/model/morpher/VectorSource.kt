@@ -1,4 +1,4 @@
-package com.baec23.ludwig.morpher.model.morpher
+package morpher.model.morpher
 
 import android.graphics.Paint
 import android.graphics.Path
@@ -13,8 +13,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.toPath
-import com.baec23.ludwig.morpher.model.path.LudwigPath
-import com.baec23.ludwig.morpher.model.path.LudwigSubpath
+import morpher.model.path.LudwigPath
+import morpher.model.path.LudwigSubpath
 
 
 data class VectorSource(

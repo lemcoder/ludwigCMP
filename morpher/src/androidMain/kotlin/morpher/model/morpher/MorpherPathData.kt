@@ -1,7 +1,7 @@
-package com.baec23.ludwig.morpher.model.morpher
+package morpher.model.morpher
 
-import com.baec23.ludwig.morpher.model.path.PairedSubpath
-import com.baec23.ludwig.morpher.model.path.UnpairedSubpath
+import morpher.model.path.PairedSubpath
+import morpher.model.path.UnpairedSubpath
 
 data class MorpherPathData(
     val pairedSubpaths: List<PairedSubpath>,

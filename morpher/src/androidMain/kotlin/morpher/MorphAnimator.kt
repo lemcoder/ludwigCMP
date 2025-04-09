@@ -1,14 +1,14 @@
-package com.baec23.ludwig.morpher
+package morpher
 
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.graphics.vector.toPath
-import com.baec23.ludwig.morpher.model.morpher.MorpherAnimationData
+import morpher.model.morpher.MorpherAnimationData
 //import com.baec23.ludwig.morpher.model.morpher.MorpherPathData
-import com.baec23.ludwig.morpher.model.morpher.MorpherPathData
-import com.baec23.ludwig.morpher.model.morpher.VectorSource
-import com.baec23.ludwig.morpher.model.path.PairedSubpath
-import com.baec23.ludwig.morpher.model.path.UnpairedSubpath
+import morpher.model.morpher.MorpherPathData
+import morpher.model.morpher.VectorSource
+import morpher.model.path.PairedSubpath
+import morpher.model.path.UnpairedSubpath
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking

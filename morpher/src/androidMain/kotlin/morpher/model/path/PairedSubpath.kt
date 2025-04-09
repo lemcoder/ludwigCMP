@@ -1,9 +1,9 @@
-package com.baec23.ludwig.morpher.model.path
+package morpher.model.path
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.vector.PathNode
-import com.baec23.ludwig.morpher.util.distanceTo
-import com.baec23.ludwig.morpher.util.lerp
+import morpher.util.distanceTo
+import morpher.util.lerp
 import kotlin.math.abs
 
 class PairedSubpath(

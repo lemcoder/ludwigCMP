@@ -1,4 +1,4 @@
-package com.baec23.ludwig.morpher.component
+package morpher.component
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
@@ -23,8 +23,8 @@ import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Constraints
-import com.baec23.ludwig.morpher.MorphAnimator
-import com.baec23.ludwig.morpher.model.morpher.VectorSource
+import morpher.MorphAnimator
+import morpher.model.morpher.VectorSource
 import kotlinx.coroutines.delay
 
 @Composable

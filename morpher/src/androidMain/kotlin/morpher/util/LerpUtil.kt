@@ -1,4 +1,4 @@
-package com.baec23.ludwig.morpher.util
+package morpher.util
 
 import android.graphics.PointF
 import androidx.compose.ui.geometry.Offset

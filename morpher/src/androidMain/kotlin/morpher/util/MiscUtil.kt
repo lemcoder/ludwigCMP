@@ -1,4 +1,4 @@
-package com.baec23.ludwig.morpher.util
+package morpher.util
 
 import androidx.compose.ui.geometry.Offset
 import kotlin.math.pow

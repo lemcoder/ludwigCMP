@@ -1,11 +1,11 @@
-package com.baec23.ludwig.morpher.model.path
+package morpher.model.path
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathMeasure
 import androidx.compose.ui.graphics.vector.PathNode
 import androidx.compose.ui.graphics.vector.PathParser
-import com.baec23.ludwig.morpher.util.lerp
+import morpher.util.lerp
 
 data class PathSegment(
     val startPosition: Offset,

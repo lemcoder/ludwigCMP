@@ -1,7 +1,7 @@
-package com.baec23.ludwig.morpher.model.morpher
+package morpher.model.morpher
 
 import androidx.compose.ui.graphics.Path
-import com.baec23.ludwig.morpher.util.getClampedIndex
+import morpher.util.getClampedIndex
 
 data class MorpherAnimationData(
     val pairedPaths: Array<Path?>,

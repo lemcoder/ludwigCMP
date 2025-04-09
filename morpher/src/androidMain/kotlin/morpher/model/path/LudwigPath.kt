@@ -1,10 +1,10 @@
-package com.baec23.ludwig.morpher.model.path
+package morpher.model.path
 
 import android.graphics.RectF
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.asAndroidPath
 import androidx.compose.ui.graphics.vector.PathParser
-import com.baec23.ludwig.morpher.util.toSubpaths
+import morpher.util.toSubpaths
 
 data class LudwigPath(
     val subpaths: List<LudwigSubpath>,

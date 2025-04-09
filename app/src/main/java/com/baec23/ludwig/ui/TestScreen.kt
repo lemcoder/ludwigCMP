@@ -44,9 +44,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.baec23.ludwig.R
-import com.baec23.ludwig.morpher.component.AnimatedVector
-import com.baec23.ludwig.morpher.component.VectorImage
-import com.baec23.ludwig.morpher.model.morpher.VectorSource
+import morpher.component.AnimatedVector
+import morpher.component.VectorImage
+import morpher.model.morpher.VectorSource
 
 
 @Composable
