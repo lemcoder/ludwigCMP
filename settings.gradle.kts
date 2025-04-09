@@ -18,8 +18,6 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Ludwig"
+rootProject.name = "LudwigCMP"
 include (":app")
-include (":component")
-include (":core")
 include (":morpher")

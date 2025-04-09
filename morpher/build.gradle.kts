@@ -1,17 +1,16 @@
 plugins {
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    id("maven-publish")
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace = "com.baec23.ludwig.morpher"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -25,21 +24,8 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     packaging {
@@ -47,46 +33,26 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
 
-    testOptions {
-        unitTests.all {
-            it.useJUnitPlatform()
+kotlin {
+    jvmToolchain(17)
+    androidTarget()
+
+    sourceSets {
+        commonMain.dependencies {
+
         }
-    }
-}
 
-dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.kotlinx.coroutines.android)
-
-    val composeBom = platform(libs.androidx.compose.bom)
-    implementation(composeBom)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.compose.material3)
-    implementation(project(":core"))
-    implementation(project(":component"))
-    implementation(libs.androidx.graphics.core)
-    implementation(libs.androidx.graphics.path)
-    implementation(libs.androidx.graphics.shapes)
-
-    testImplementation(libs.junit)
-    testImplementation(libs.junit.jupiter)
-    testImplementation(libs.kotest.runner.junit5)
-    testImplementation(libs.kotest.assertions.core)
-
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-}
-
-afterEvaluate{
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                groupId = "com.github.baec23.ludwig"
-                artifactId = "morpher"
-                from(components["release"])
-            }
+        androidMain.dependencies {
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.kotlinx.coroutines.android)
+            implementation(project.dependencies.platform(libs.androidx.compose.bom))
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.compose.material3)
+            implementation(libs.androidx.graphics.core)
+            implementation(libs.androidx.graphics.path)
+            implementation(libs.androidx.graphics.shapes)
         }
     }
 }

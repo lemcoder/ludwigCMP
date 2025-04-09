@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,8 +44,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.baec23.ludwig.R
-import com.baec23.ludwig.component.section.DisplaySection
-import com.baec23.ludwig.component.fadinglazy.FadingLazyVerticalGrid
 import com.baec23.ludwig.morpher.component.AnimatedVector
 import com.baec23.ludwig.morpher.component.VectorImage
 import com.baec23.ludwig.morpher.model.morpher.VectorSource
@@ -165,17 +165,13 @@ fun TestScreen() {
                 animationSpec = tween(durationMillis = 800, easing = EaseInOutExpo)
             )
         }
-        DisplaySection(
+        Box(
             modifier = Modifier.padding(horizontal = 8.dp),
-            headerText = "Controls",
-            contentPadding = PaddingValues(16.dp),
-            headerIcon = Icons.Default.Star
         ) {
-            FadingLazyVerticalGrid(
+            LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = 100.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-                gradientHeightPercent = 0.2f
             ) {
                 items(targetVectors) {
                     Box(modifier = Modifier
