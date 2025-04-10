@@ -105,17 +105,11 @@ fun TestScreen() {
     val checkCircleVectorSource =
         VectorSource.fromImageVector(Icons.Outlined.CheckCircle)
 
-    val testStringVectorSource = VectorSource.fromText("H")
-    val testStringVectorSource2 = VectorSource.fromText("E")
-    val testStringVectorSource3 = VectorSource.fromText("L")
-    val testStringVectorSource4 = VectorSource.fromText("L")
-    val testStringVectorSource5 = VectorSource.fromText("O")
-
     val targetVectors: List<VectorSource> = listOf(
-//        redditVectorSource,
-//        androidVectorSource,
-//        chromeVectorSource,
-//        firefoxVectorSource,
+        redditVectorSource,
+        androidVectorSource,
+        chromeVectorSource,
+        firefoxVectorSource,
 //        skypeVectorSource,
 //        refreshVectorSource,
 //        shoppingCartVectorSource,
@@ -141,11 +135,6 @@ fun TestScreen() {
 //        closeVectorSource,
 //        checkVectorSource,
 //        checkCircleVectorSource,
-        testStringVectorSource,
-        testStringVectorSource2,
-        testStringVectorSource3,
-        testStringVectorSource4,
-        testStringVectorSource5,
     )
 
     var currSelectedSource by remember { mutableStateOf(appleVectorSource) }

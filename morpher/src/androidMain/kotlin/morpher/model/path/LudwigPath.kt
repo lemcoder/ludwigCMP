@@ -16,7 +16,7 @@ data class LudwigPath(
          * Compose Path
          */
         fun fromPath(
-            path: androidx.compose.ui.graphics.Path,
+            path: Path,
             targetWidth: Float,
             targetHeight: Float
         ): LudwigPath {
@@ -36,19 +36,6 @@ data class LudwigPath(
             val subpaths = androidx.graphics.path.PathIterator(path).asSequence().toList()
                 .toSubpaths(bounds, targetWidth, targetHeight)
             return LudwigPath(subpaths, targetWidth, targetHeight)
-        }
-
-        /**
-         * Android Path (No Scaling)
-         */
-        fun fromPath(
-            path: android.graphics.Path,
-        ): LudwigPath {
-            val bounds = RectF()
-            path.computeBounds(bounds, true)
-            val subpaths = androidx.graphics.path.PathIterator(path).asSequence().toList()
-                .toSubpaths(bounds)
-            return LudwigPath(subpaths, bounds.width(), bounds.height())
         }
     }
 
