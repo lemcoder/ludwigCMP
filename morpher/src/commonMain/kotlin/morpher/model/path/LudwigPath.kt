@@ -1,7 +1,6 @@
 package morpher.model.path
 
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.toAndroidRectF
 import androidx.compose.ui.graphics.vector.PathParser
 import morpher.util.toSubpaths
 
