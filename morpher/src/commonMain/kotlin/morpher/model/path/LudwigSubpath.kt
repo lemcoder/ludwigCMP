@@ -5,7 +5,6 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.vector.PathNode
 import androidx.compose.ui.graphics.vector.PathParser
-import java.util.LinkedList
 
 data class LudwigSubpath(
     val pathSegments: List<PathSegment>,
@@ -15,7 +14,7 @@ data class LudwigSubpath(
 ){
     val length: Float = pathSegments.map{it.length}.sum()
     fun reverse(): LudwigSubpath {
-        val reversedPathSegments = LinkedList<PathSegment>()
+        val reversedPathSegments = ArrayDeque<PathSegment>()
         pathSegments.forEach { segment ->
             val node = segment.pathNode
             if (node !is PathNode.MoveTo) {
