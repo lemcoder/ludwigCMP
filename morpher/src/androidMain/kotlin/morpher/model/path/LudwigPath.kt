@@ -1,8 +1,7 @@
 package morpher.model.path
 
-import android.graphics.RectF
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.asAndroidPath
+import androidx.compose.ui.graphics.toAndroidRectF
 import androidx.compose.ui.graphics.vector.PathParser
 import morpher.util.toSubpaths
 
@@ -20,21 +19,9 @@ data class LudwigPath(
             targetWidth: Float,
             targetHeight: Float
         ): LudwigPath {
-            return fromPath(path.asAndroidPath(), targetWidth, targetHeight)
-        }
+            val bounds = path.getBounds()
+            val subpaths = path.iterator().asSequence().toList().toSubpaths(bounds, targetWidth, targetHeight)
 
-        /**
-         * Android Path
-         */
-        fun fromPath(
-            path: android.graphics.Path,
-            targetWidth: Float,
-            targetHeight: Float
-        ): LudwigPath {
-            val bounds = RectF()
-            path.computeBounds(bounds, true)
-            val subpaths = androidx.graphics.path.PathIterator(path).asSequence().toList()
-                .toSubpaths(bounds, targetWidth, targetHeight)
             return LudwigPath(subpaths, targetWidth, targetHeight)
         }
     }

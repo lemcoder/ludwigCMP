@@ -1,20 +1,12 @@
 package morpher.model.morpher
 
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.RectF
-import android.graphics.Typeface
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.PathOperation.Companion.Difference
-import androidx.compose.ui.graphics.PathOperation.Companion.Union
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.toPath
 import morpher.model.path.LudwigPath
-import morpher.model.path.LudwigSubpath
-
 
 data class VectorSource(
     val ludwigPath: LudwigPath,

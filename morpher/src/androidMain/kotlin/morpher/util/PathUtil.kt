@@ -1,36 +1,27 @@
 package morpher.util
 
-import android.graphics.PointF
-import android.graphics.RectF
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.vector.PathNode
-import androidx.core.graphics.plus
-import androidx.core.graphics.times
 import morpher.model.path.LudwigSubpath
 import morpher.model.path.PathSegment
+import morpher.model.primitives.PointF
+import morpher.model.primitives.plus
+import morpher.model.primitives.times
 import kotlin.math.abs
-import morpher.model.primitives.PointF as CommonPointF
+import androidx.compose.ui.graphics.PathSegment as ComposePathSegment
 
-fun PointF.toCommon() = CommonPointF(this.x, this.y)
-
-internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
-    bounds: RectF,
-): List<LudwigSubpath> {
-    return this.toSubpaths(bounds, bounds.width(), bounds.height())
-}
-
-internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
-    bounds: RectF,
+internal fun List<ComposePathSegment>.toSubpaths(
+    bounds: Rect,
     targetWidth: Float,
     targetHeight: Float,
 ): List<LudwigSubpath> {
 
-    val scaleFactorX = targetWidth / bounds.width()
-    val scaleFactorY = targetHeight / bounds.height()
+    val scaleFactorX = targetWidth / bounds.width
+    val scaleFactorY = targetHeight / bounds.height
     val scaleFactor = minOf(scaleFactorX, scaleFactorY)
-    val scaledWidth = scaleFactor * bounds.width()
-    val scaledHeight = scaleFactor * bounds.height()
+    val scaledWidth = scaleFactor * bounds.width
+    val scaledHeight = scaleFactor * bounds.height
     val offsetX = ((targetWidth - scaledWidth) / 2) - bounds.left * scaleFactor
     val offsetY = ((targetHeight - scaledHeight) / 2) - bounds.top * scaleFactor
     val offset = PointF(offsetX, offsetY)
@@ -41,10 +32,13 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
     var currPosition = PointF(0f, 0f)
     var area = 0f
 
-    this.forEach { androidSegment ->
-        when (androidSegment.type) {
-            androidx.graphics.path.PathSegment.Type.Move -> {
-                val end = androidSegment.points[0] * scaleFactor + offset
+    this.forEach { segment ->
+        when (segment.type) {
+            ComposePathSegment.Type.Move -> {
+                // FIXME
+                val point = PointF(segment.points[0], segment.points[1])
+                val end = point * scaleFactor + offset
+
                 if (currSubpath.isNotEmpty()) {
                     if (currSubpath.first() != currSubpath.last() &&
                         currSubpath.first().startPosition.x.approxEquals(currSubpath.last().endPosition.x) &&
@@ -75,11 +69,15 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
                 currPosition = end
             }
 
-            androidx.graphics.path.PathSegment.Type.Line -> {
-                val start = androidSegment.points[0] * scaleFactor + offset
-                val end = androidSegment.points[1] * scaleFactor + offset
-                val cp1 = lerp(start.toCommon(), end.toCommon(), 1 / 3f)
-                val cp2 = lerp(start.toCommon(), end.toCommon(), 2 / 3f)
+            ComposePathSegment.Type.Line -> {
+                // FIXME
+                val startPoint = PointF(segment.points[0], segment.points[1])
+                val endPoint = PointF(segment.points[2], segment.points[3])
+
+                val start = startPoint * scaleFactor + offset
+                val end = endPoint * scaleFactor + offset
+                val cp1 = lerp(start, end, 1 / 3f)
+                val cp2 = lerp(start, end, 2 / 3f)
 
                 currSubpath.add(
                     PathSegment(
@@ -93,10 +91,15 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
                 currPosition = end
             }
 
-            androidx.graphics.path.PathSegment.Type.Quadratic -> {
-                val start = androidSegment.points[0] * scaleFactor + offset
-                val inCp = androidSegment.points[1] * scaleFactor + offset
-                val end = androidSegment.points[2] * scaleFactor + offset
+            ComposePathSegment.Type.Quadratic -> {
+                // FIXME
+                val startPoint = PointF(segment.points[0], segment.points[1])
+                val inCpPoint = PointF(segment.points[2], segment.points[3])
+                val endPoint = PointF(segment.points[4], segment.points[5])
+
+                val start = startPoint * scaleFactor + offset
+                val inCp = inCpPoint * scaleFactor + offset
+                val end = endPoint * scaleFactor + offset
 
                 val cp1 = Offset(
                     start.x + 2.0f / 3.0f * (inCp.x - start.x),
@@ -118,14 +121,20 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
                 currPosition = end
             }
 
-            androidx.graphics.path.PathSegment.Type.Conic -> {/* no-op */
+            ComposePathSegment.Type.Conic -> {/* no-op */
             }
 
-            androidx.graphics.path.PathSegment.Type.Cubic -> {
-                val start = androidSegment.points[0] * scaleFactor + offset
-                val cp1 = androidSegment.points[1] * scaleFactor + offset
-                val cp2 = androidSegment.points[2] * scaleFactor + offset
-                val end = androidSegment.points[3] * scaleFactor + offset
+            ComposePathSegment.Type.Cubic -> {
+                // FIXME
+                val startPoint = PointF(segment.points[0], segment.points[1])
+                val cp1Point = PointF(segment.points[2], segment.points[3])
+                val cp2Point = PointF(segment.points[4], segment.points[5])
+                val endPoint = PointF(segment.points[6], segment.points[7])
+
+                val start = startPoint * scaleFactor + offset
+                val cp1 = cp1Point * scaleFactor + offset
+                val cp2 = cp2Point * scaleFactor + offset
+                val end = endPoint * scaleFactor + offset
 
                 currSubpath.add(
                     PathSegment(
@@ -139,7 +148,7 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
                 currPosition = end
             }
 
-            androidx.graphics.path.PathSegment.Type.Close -> {
+            ComposePathSegment.Type.Close -> {
                 if (currSubpath.isNotEmpty()) {
                     val end = PointF(
                         currSubpath.first().startPosition.x, currSubpath.first().startPosition.y
@@ -160,7 +169,7 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
                 }
             }
 
-            androidx.graphics.path.PathSegment.Type.Done -> {
+            ComposePathSegment.Type.Done -> {
                 return@forEach
             }
         }
