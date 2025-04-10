@@ -41,23 +41,26 @@ data class MorpherAnimationData(
         unpairedEndPaths[index] = path
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
 
-        other as MorpherAnimationData
-
-        if (!pairedPaths.contentEquals(other.pairedPaths)) return false
-        if (!unpairedStartPaths.contentEquals(other.unpairedStartPaths)) return false
-        if (!unpairedEndPaths.contentEquals(other.unpairedEndPaths)) return false
-
-        return true
-    }
 
     override fun hashCode(): Int {
         var result = pairedPaths.contentHashCode()
         result = 31 * result + unpairedStartPaths.contentHashCode()
         result = 31 * result + unpairedEndPaths.contentHashCode()
         return result
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as MorpherAnimationData
+
+        if (smoothness != other.smoothness) return false
+        if (!pairedPaths.contentEquals(other.pairedPaths)) return false
+        if (!unpairedStartPaths.contentEquals(other.unpairedStartPaths)) return false
+        if (!unpairedEndPaths.contentEquals(other.unpairedEndPaths)) return false
+
+        return true
     }
 }

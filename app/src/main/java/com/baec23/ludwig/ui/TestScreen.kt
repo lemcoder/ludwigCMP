@@ -7,7 +7,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +17,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.CheckCircle
@@ -27,7 +25,6 @@ import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,7 +35,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -105,17 +101,11 @@ fun TestScreen() {
     val checkCircleVectorSource =
         VectorSource.fromImageVector(Icons.Outlined.CheckCircle)
 
-    val testStringVectorSource = VectorSource.fromText("H")
-    val testStringVectorSource2 = VectorSource.fromText("E")
-    val testStringVectorSource3 = VectorSource.fromText("L")
-    val testStringVectorSource4 = VectorSource.fromText("L")
-    val testStringVectorSource5 = VectorSource.fromText("O")
-
     val targetVectors: List<VectorSource> = listOf(
-//        redditVectorSource,
-//        androidVectorSource,
-//        chromeVectorSource,
-//        firefoxVectorSource,
+        redditVectorSource,
+        androidVectorSource,
+        chromeVectorSource,
+        firefoxVectorSource,
 //        skypeVectorSource,
 //        refreshVectorSource,
 //        shoppingCartVectorSource,
@@ -141,11 +131,6 @@ fun TestScreen() {
 //        closeVectorSource,
 //        checkVectorSource,
 //        checkCircleVectorSource,
-        testStringVectorSource,
-        testStringVectorSource2,
-        testStringVectorSource3,
-        testStringVectorSource4,
-        testStringVectorSource5,
     )
 
     var currSelectedSource by remember { mutableStateOf(appleVectorSource) }

@@ -47,12 +47,5 @@ kotlin {
             implementation(libs.kotlinx.coroutines)
             implementation(compose.foundation)
         }
-
-        androidMain.dependencies {
-            implementation(libs.androidx.core.ktx)
-            implementation(libs.androidx.graphics.core)
-            implementation(libs.androidx.graphics.path)
-            implementation(libs.androidx.graphics.shapes)
-        }
     }
 }
