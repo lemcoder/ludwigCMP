@@ -10,6 +10,9 @@ import androidx.core.graphics.times
 import morpher.model.path.LudwigSubpath
 import morpher.model.path.PathSegment
 import kotlin.math.abs
+import morpher.model.primitives.PointF as CommonPointF
+
+fun PointF.toCommon() = CommonPointF(this.x, this.y)
 
 internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
     bounds: RectF,
@@ -75,8 +78,8 @@ internal fun List<androidx.graphics.path.PathSegment>.toSubpaths(
             androidx.graphics.path.PathSegment.Type.Line -> {
                 val start = androidSegment.points[0] * scaleFactor + offset
                 val end = androidSegment.points[1] * scaleFactor + offset
-                val cp1 = lerp(start, end, 1 / 3f)
-                val cp2 = lerp(start, end, 2 / 3f)
+                val cp1 = lerp(start.toCommon(), end.toCommon(), 1 / 3f)
+                val cp2 = lerp(start.toCommon(), end.toCommon(), 2 / 3f)
 
                 currSubpath.add(
                     PathSegment(

@@ -1,8 +1,8 @@
 package morpher.util
 
-import android.graphics.PointF
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.vector.PathNode
+import morpher.model.primitives.PointF
 
 
 internal fun PathNode.lerp(target: PathNode, fraction: Float): PathNode {
