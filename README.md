@@ -11,7 +11,10 @@ When vectorSource changes, AnimatedVector will morph animate the change.
 AnimatedVector(
     vectorSource = selectedVectorSource
 )
+```
 
 
-https://github.com/user-attachments/assets/9f186fb0-74ef-47ea-827d-3578f6581fa9
+
+
+https://github.com/user-attachments/assets/ff59a059-7be0-4213-ac92-b8ae3b95fa9a
 
