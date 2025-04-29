@@ -1,4 +1,4 @@
-# Ludwig for Jetpack Compose
+# Ludwig for Compose Multiplatform
 
 ### Getting Started
 #### Create VectorSource from ImageVector
