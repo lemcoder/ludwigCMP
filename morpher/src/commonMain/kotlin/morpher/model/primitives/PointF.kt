@@ -85,10 +85,10 @@ class PointF(
     }
 }
 
-inline operator fun PointF.plus(p: PointF): PointF {
+operator fun PointF.plus(p: PointF): PointF {
     return PointF(x, y).apply { offset(p.x, p.y) }
 }
 
-inline operator fun PointF.times(scalar: Float): PointF {
+operator fun PointF.times(scalar: Float): PointF {
     return PointF(this.x * scalar, this.y * scalar)
 }

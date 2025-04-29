@@ -34,6 +34,8 @@ fun AnimatedVector(
     animationSpec: AnimationSpec<Float> = tween(durationMillis = 1000, easing = EaseInOutExpo),
     strokeWidth: Float = 10f,
     strokeColor: Color = Color.Black,
+    strokeJoin: StrokeJoin = StrokeJoin.Round,
+    strokeCap: StrokeCap = StrokeCap.Round,
 ) {
     var startVectorSource by remember { mutableStateOf(vectorSource) }
     var endVectorSource by remember { mutableStateOf(vectorSource) }
@@ -72,6 +74,8 @@ fun AnimatedVector(
         progress = animationProgress.value,
         strokeWidth = strokeWidth,
         strokeColor = strokeColor,
+        strokeJoin = strokeJoin,
+        strokeCap = strokeCap
     )
 }
 
@@ -85,6 +89,8 @@ fun AnimatedVector(
     strokeColor: Color = Color.Black,
     extraPathsBreakpoint: Float = 0.2f,
     animationSmoothness: Int = 200,
+    strokeJoin: StrokeJoin = StrokeJoin.Round,
+    strokeCap: StrokeCap = StrokeCap.Round
 ) {
     var morphAnimator by remember { mutableStateOf<MorphAnimator?>(null) }
     val vectorWidth = 1000f
@@ -159,8 +165,8 @@ fun AnimatedVector(
                                 color = strokeColor,
                                 style = Stroke(
                                     width = strokeWidth,
-                                    join = StrokeJoin.Round,
-                                    cap = StrokeCap.Round
+                                    join = strokeJoin,
+                                    cap = strokeCap
                                 )
                             )
 
@@ -180,8 +186,8 @@ fun AnimatedVector(
                                     color = strokeColor,
                                     style = Stroke(
                                         width = strokeWidth,
-                                        join = StrokeJoin.Round,
-                                        cap = StrokeCap.Round
+                                        join = strokeJoin,
+                                        cap = strokeCap
                                     ),
                                     alpha = minOf(
                                         maxOf(1f - extraStartPathsAnimationProgress, 0f),
@@ -206,8 +212,8 @@ fun AnimatedVector(
                                     color = strokeColor,
                                     style = Stroke(
                                         width = strokeWidth,
-                                        join = StrokeJoin.Round,
-                                        cap = StrokeCap.Round
+                                        join = strokeJoin,
+                                        cap = strokeCap
                                     ),
                                     alpha = minOf(maxOf(extraEndPathsAnimationProgress, 0f), 1f)
                                 )

@@ -3,7 +3,11 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.compose.compiler)
+    id("maven-publish")
 }
+
+group = "com.baec23.ludwig"
+version = "1.0.0"
 
 android {
     namespace = "com.baec23.ludwig.morpher"
@@ -47,5 +51,11 @@ kotlin {
             implementation(libs.kotlinx.coroutines)
             implementation(compose.foundation)
         }
+    }
+}
+
+publishing {
+    repositories {
+        mavenLocal()
     }
 }
